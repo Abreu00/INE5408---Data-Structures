@@ -1,3 +1,4 @@
+//! Copyright [year] <Copyright Owner>
 #ifndef STRUCTURES_LINKED_LIST_H
 #define STRUCTURES_LINKED_LIST_H
 
@@ -7,7 +8,7 @@
 
 namespace structures {
 
-//! Classe lista encadeada
+//! ...
 template<typename T>
 class LinkedList {
  public:
@@ -171,11 +172,13 @@ void structures::LinkedList<T>::insert(const T& data, std::size_t index) {
 
 template<typename T>
 void structures::LinkedList<T>::insert_sorted(const T& data) {
+    Node* node = head;
     for (int i  = 0; i < size_; ++i) {
-        if (data < at(i)) {
+        if (data < node->data()) {
             insert(data, i);
             return;
         }
+        node = node->next();
     }
     push_back(data);
 }
