@@ -10,7 +10,7 @@ int main() {
 	
     cin >> xmlfilename;
 	XmlValidator xml(xmlfilename);
-	for (int i = 0; i < 30; i++) xml.read_line();
+    xml.validate_file();
+    if (!xml.is_valid()) cout << "error" << endl;
 
-    return 0;
 }
