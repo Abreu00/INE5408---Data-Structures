@@ -1,6 +1,5 @@
 #include <iostream>
 #include "xml_validator.hpp"
-#include "linked_queue.hpp"
 
 using namespace std;
 
@@ -10,10 +9,8 @@ int main() {
 
 	
     cin >> xmlfilename;
-    string path = "./datasets/" + string(xmlfilename);
-	XmlValidator xml(path);
+	XmlValidator xml(xmlfilename);
     xml.validate_file();
     if (!xml.is_valid()) cout << "error" << endl;
 
 }
-
