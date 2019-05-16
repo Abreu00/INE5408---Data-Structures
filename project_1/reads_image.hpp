@@ -50,3 +50,25 @@ void dealocMatrix(int**& matrix, int lines, int cols) {
     }
     delete [] matrix;
 }
+
+Image parse(ifstream &file, string &line) {
+    //! Retuns an Image obj based on data from xml file
+    Image img;
+    while (line != "</dataset>") {
+        file >> line;
+        string content = "";
+        content = getContent(line, "name");
+        
+        if (content != "") {
+            img.name = content;
+            file >> line;
+            img.height = stoi(getContent(line, "height"));
+            img.width = stoi(getContent(line, "width"));
+            file >> line;
+            img.data = getImageBin(file, line, img.width, img.height);
+            return img;
+        }
+    }
+    img.name = "EOF";
+    return img;
+}
