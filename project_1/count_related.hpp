@@ -1,6 +1,6 @@
 #include "Image.h"
 #include "linked_queue.hpp"
-#include "dealoc_matrix.hpp"
+#include "dealloc_matrix.hpp"
 
 using namespace structures;
 
@@ -31,7 +31,7 @@ int count_related(Image img) {
             }
         }  
     }
-    dealocMatrix(aux_matrix, height, width);
+    deallocMatrix(aux_matrix, height, width);
     return label;
     
 }
@@ -75,22 +75,4 @@ void neighbors(int x, int y, LinkedQueue<int> &queue, Image &img, int** &aux, in
         queue.enqueue(y + 1);
         aux[y + 1][x] = label;
     }
-}
-
-
-
-int get_last_label(int** aux_matrix, int width, int height) {
-    //! Returns last label set on auxiliary matrix
-    //! Which represents number of related components on Image
-    //! If no label was ever set returns 0, which means there is no related components
-    //! on image
-    int label = 0;
-    for (int i = height - 1; i >= 0 ; --i) {
-        for (int j = width - 1; j >= 0; --j) {
-            if (aux_matrix[i][j] != 0) {
-                return aux_matrix[i][j];
-            }
-        }
-    }
-    return 0;
 }
