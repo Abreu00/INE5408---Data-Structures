@@ -44,13 +44,6 @@ int** getImageBin(ifstream &file, string &line, int width, int height) {
     return data;
 } 
 
-void dealocMatrix(int**& matrix, int lines, int cols) {
-    for (int i = 0; i < lines; ++i) {
-        delete [] matrix[i];
-    }
-    delete [] matrix;
-}
-
 Image parse(ifstream &file, string &line) {
     //! Retuns an Image obj based on data from xml file
     Image img;
